@@ -1,19 +1,9 @@
 /**
  * Stream Communication Types
- * Common types for streaming AI responses over WebSocket or HTTP
+ * Re-exported from @packages/zod-schema
  */
-export function mapFinishReason(reason) {
-    switch (reason) {
-        case 'stop':
-            return 'stop';
-        case 'tool-calls':
-            return 'tool_calls';
-        case 'length':
-            return 'length';
-        case 'content-filter':
-            return 'content_filter';
-        default:
-            return 'stop';
-    }
-}
+// Re-export all stream types from zod-schema
+export { 
+// Utilities
+mapFinishReason, } from '@packages/zod-schema';
 //# sourceMappingURL=stream.js.map

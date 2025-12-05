@@ -1,17 +1,9 @@
 /**
  * Message Types
- * Common message format for AI communication
+ * Re-exported from @packages/zod-schema
  */
-// ============================================
-// Type Guards
-// ============================================
-export function isTextPart(part) {
-    return part.type === 'text';
-}
-export function isToolCallPart(part) {
-    return part.type === 'tool-call';
-}
-export function isToolResultPart(part) {
-    return part.type === 'tool-result';
-}
+// Re-export all message types from zod-schema
+export { 
+// Type guards
+isTextPart, isToolCallPart, isToolResultPart, } from '@packages/zod-schema';
 //# sourceMappingURL=messages.js.map

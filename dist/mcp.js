@@ -1,8 +1,7 @@
 /**
  * MCP (Model Context Protocol) Types
  *
- * Types for headless MCP tool definitions and metadata.
- * Enables JSON-based MCP metadata without server process.
+ * Re-exported from @packages/zod-schema with local utilities.
  *
  * @see https://modelcontextprotocol.io/
  */

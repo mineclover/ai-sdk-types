@@ -1,28 +1,9 @@
 /**
  * Message Types
- * Common message format for AI communication
+ * Re-exported from @packages/zod-schema
  */
-export type MessageRole = 'user' | 'assistant' | 'system' | 'tool';
-export interface Message {
-    role: MessageRole;
-    content: string | MessageContent[];
-}
-export interface MessageContent {
-    type: 'text' | 'image' | 'tool_use' | 'tool_result';
-    text?: string;
-    image_url?: {
-        url: string;
-    };
-    tool_use_id?: string;
-    name?: string;
-    input?: unknown;
-    content?: string;
-}
-export interface ToolCall {
-    id: string;
-    name: string;
-    arguments: Record<string, unknown>;
-}
+export { type MessageRole, type Message, type MessageContent, type MessageContentType, type TextPart, type ToolCallPart, type ToolResultPart, type MessagePart, isTextPart, isToolCallPart, isToolResultPart, } from '@packages/zod-schema';
+export { type ToolCall } from '@packages/zod-schema';
 export interface ToolDefinition {
     type: 'function';
     function: {
@@ -35,24 +16,4 @@ export interface ToolDefinition {
         };
     };
 }
-export interface TextPart {
-    type: 'text';
-    text: string;
-}
-export interface ToolCallPart {
-    type: 'tool-call';
-    toolCallId: string;
-    toolName: string;
-    args: Record<string, unknown>;
-}
-export interface ToolResultPart {
-    type: 'tool-result';
-    toolCallId: string;
-    toolName: string;
-    result: unknown;
-}
-export type MessagePart = TextPart | ToolCallPart | ToolResultPart;
-export declare function isTextPart(part: MessagePart): part is TextPart;
-export declare function isToolCallPart(part: MessagePart): part is ToolCallPart;
-export declare function isToolResultPart(part: MessagePart): part is ToolResultPart;
 //# sourceMappingURL=messages.d.ts.map

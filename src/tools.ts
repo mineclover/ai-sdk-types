@@ -1,29 +1,22 @@
 /**
  * Tool Types (AI SDK 5 compatible)
  *
- * Aligned with Vercel AI SDK 5 tool format:
- * - inputSchema: JSON Schema for input validation
- * - outputSchema: Optional JSON Schema for output (MCP compatible)
- * - execute: Async function with optional execution options
+ * Re-exported from @packages/zod-schema with local extensions.
  *
  * @see https://ai-sdk.dev/docs/ai-sdk-core/tools-and-tool-calling
  */
 
-// ============================================
-// JSON Schema Types
-// ============================================
+// Re-export base types from zod-schema
+export {
+  type JSONSchema,
+  type ToolSchema,
+  type OpenAIToolDefinition,
+} from '@packages/zod-schema'
 
-/** JSON Schema type for tool schemas */
-export interface JSONSchema {
-  type: string
-  properties?: Record<string, unknown>
-  required?: string[]
-  description?: string
-  [key: string]: unknown
-}
+import type { JSONSchema, ToolSchema, OpenAIToolDefinition } from '@packages/zod-schema'
 
 // ============================================
-// Tool Execution Options
+// Tool Execution Options (local extension)
 // ============================================
 
 /** Tool execution options (AI SDK 5 compatible) */
@@ -35,11 +28,11 @@ export interface ToolExecutionOptions {
 }
 
 // ============================================
-// Tool Definition (AI SDK 5)
+// Tool Definition (AI SDK 5) - with execute
 // ============================================
 
 /**
- * AI SDK 5 compatible tool definition
+ * AI SDK 5 compatible tool definition with execute function
  *
  * Unlike OpenAI format (type: 'function' wrapper), this is a flat structure
  * aligned with MCP and AI SDK 5.
@@ -55,20 +48,8 @@ export interface Tool<TInput = unknown, TOutput = unknown> {
   execute: (input: TInput, options?: ToolExecutionOptions) => Promise<TOutput>
 }
 
-/**
- * Tool definition without execute function (for schema-only use)
- */
-export interface ToolSchema {
-  /** Tool description for LLM to understand when to use it */
-  description: string
-  /** JSON Schema for input validation */
-  inputSchema: JSONSchema
-  /** Optional JSON Schema for output (MCP compatible) */
-  outputSchema?: JSONSchema
-}
-
 // ============================================
-// Tool Registry Types
+// Tool Registry Types (local extensions)
 // ============================================
 
 /** Registry of tools by name */
@@ -82,27 +63,6 @@ export type ToolInput<T extends Tool> = T extends Tool<infer I, unknown> ? I : n
 
 /** Extract output type from a tool */
 export type ToolOutput<T extends Tool> = T extends Tool<unknown, infer O> ? O : never
-
-// ============================================
-// OpenAI-compatible Tool Definition (for API)
-// ============================================
-
-/**
- * OpenAI-compatible tool definition format
- * Used for API calls to providers that expect OpenAI format
- */
-export interface OpenAIToolDefinition {
-  type: 'function'
-  function: {
-    name: string
-    description?: string
-    parameters?: {
-      type: 'object'
-      properties: Record<string, unknown>
-      required?: string[]
-    }
-  }
-}
 
 // ============================================
 // Conversion Utilities

@@ -7,12 +7,8 @@
  * Based on OpenAPI extension pattern (x-* properties).
  */
 import type { JSONSchema, ToolSchema } from './tools.js';
-/** UI widget type for visual representation */
-export type UIWidgetType = 'color' | 'date' | 'time' | 'datetime' | 'range' | 'textarea' | 'select' | 'radio' | 'checkbox';
-/** Field direction for flow nodes */
-export type FieldDirection = 'input' | 'output';
-/** Flow node type */
-export type FlowNodeType = 'query' | 'effect';
+export { type UIWidgetType, type FieldDirection, type FlowNodeType, type ShortcutConfig, type BranchMetadata, type NodePosition, type StateConnection, } from '@packages/zod-schema';
+import type { UIWidgetType, FieldDirection, FlowNodeType, ShortcutConfig, BranchMetadata, NodePosition, StateConnection } from '@packages/zod-schema';
 /**
  * JSON Schema property with UI extensions
  *
@@ -68,54 +64,6 @@ export interface UIPropertySchema extends JSONSchema {
         nodeId: string;
         field: string;
     };
-}
-/** Keyboard shortcut configuration */
-export interface ShortcutConfig {
-    /** Trigger key */
-    key: string;
-    /** Ctrl/Cmd modifier */
-    ctrl?: boolean;
-    /** Alt/Option modifier */
-    alt?: boolean;
-    /** Shift modifier */
-    shift?: boolean;
-    /** Meta (Windows/Command) modifier */
-    meta?: boolean;
-    /** Shortcut description */
-    description?: string;
-    /** Arguments to pass when triggered */
-    args?: unknown[];
-}
-/** Branch metadata for query nodes */
-export interface BranchMetadata {
-    /** Branch identifier - matches return value case */
-    case: string;
-    /** Human-readable label for UI */
-    label?: string;
-    /** Description of this branch outcome */
-    description?: string;
-    /** Next function/node to call (for auto-wiring) */
-    next?: string | string[];
-    /** Visual color for this branch (hex) */
-    color?: string;
-    /** Additional metadata */
-    meta?: Record<string, unknown>;
-}
-/** Visual position for nodes */
-export interface NodePosition {
-    x: number;
-    y: number;
-}
-/** State connection - links node outputs to inputs */
-export interface StateConnection {
-    /** Source node ID */
-    from: string;
-    /** Source output field key */
-    fromField: string;
-    /** Target node ID */
-    to: string;
-    /** Target input field key */
-    toField: string;
 }
 /**
  * Tool definition with UI extensions

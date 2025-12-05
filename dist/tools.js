@@ -1,10 +1,7 @@
 /**
  * Tool Types (AI SDK 5 compatible)
  *
- * Aligned with Vercel AI SDK 5 tool format:
- * - inputSchema: JSON Schema for input validation
- * - outputSchema: Optional JSON Schema for output (MCP compatible)
- * - execute: Async function with optional execution options
+ * Re-exported from @packages/zod-schema with local extensions.
  *
  * @see https://ai-sdk.dev/docs/ai-sdk-core/tools-and-tool-calling
  */

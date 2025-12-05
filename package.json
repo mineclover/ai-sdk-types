@@ -67,6 +67,9 @@
     "claude"
   ],
   "license": "MIT",
+  "dependencies": {
+    "@packages/zod-schema": "github:mineclover/zod-schema"
+  },
   "devDependencies": {
     "typescript": "^5.7.2"
   }

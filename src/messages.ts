@@ -1,31 +1,30 @@
 /**
  * Message Types
- * Common message format for AI communication
+ * Re-exported from @packages/zod-schema
  */
 
-export type MessageRole = 'user' | 'assistant' | 'system' | 'tool'
+// Re-export all message types from zod-schema
+export {
+  // Types
+  type MessageRole,
+  type Message,
+  type MessageContent,
+  type MessageContentType,
+  type TextPart,
+  type ToolCallPart,
+  type ToolResultPart,
+  type MessagePart,
+  // Type guards
+  isTextPart,
+  isToolCallPart,
+  isToolResultPart,
+} from '@packages/zod-schema'
 
-export interface Message {
-  role: MessageRole
-  content: string | MessageContent[]
-}
+// Re-export ToolCall from zod-schema (note: different structure)
+export { type ToolCall } from '@packages/zod-schema'
 
-export interface MessageContent {
-  type: 'text' | 'image' | 'tool_use' | 'tool_result'
-  text?: string
-  image_url?: { url: string }
-  tool_use_id?: string
-  name?: string
-  input?: unknown
-  content?: string
-}
-
-export interface ToolCall {
-  id: string
-  name: string
-  arguments: Record<string, unknown>
-}
-
+// Local type that differs from zod-schema
+// This is OpenAI-compatible format, kept for backwards compatibility
 export interface ToolDefinition {
   type: 'function'
   function: {
@@ -37,45 +36,4 @@ export interface ToolDefinition {
       required?: string[]
     }
   }
-}
-
-// ============================================
-// Message Part Types (for multi-part messages)
-// ============================================
-
-export interface TextPart {
-  type: 'text'
-  text: string
-}
-
-export interface ToolCallPart {
-  type: 'tool-call'
-  toolCallId: string
-  toolName: string
-  args: Record<string, unknown>
-}
-
-export interface ToolResultPart {
-  type: 'tool-result'
-  toolCallId: string
-  toolName: string
-  result: unknown
-}
-
-export type MessagePart = TextPart | ToolCallPart | ToolResultPart
-
-// ============================================
-// Type Guards
-// ============================================
-
-export function isTextPart(part: MessagePart): part is TextPart {
-  return part.type === 'text'
-}
-
-export function isToolCallPart(part: MessagePart): part is ToolCallPart {
-  return part.type === 'tool-call'
-}
-
-export function isToolResultPart(part: MessagePart): part is ToolResultPart {
-  return part.type === 'tool-result'
 }

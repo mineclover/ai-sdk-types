@@ -1,157 +1,31 @@
 /**
  * MCP (Model Context Protocol) Types
  *
- * Types for headless MCP tool definitions and metadata.
- * Enables JSON-based MCP metadata without server process.
+ * Re-exported from @packages/zod-schema with local utilities.
  *
  * @see https://modelcontextprotocol.io/
  */
 
-import type { JSONSchema, OpenAIToolDefinition, ToolSchema } from './tools.js'
+import type { OpenAIToolDefinition, ToolSchema } from './tools.js'
 
-// ============================================
-// MCP Tool Definition
-// ============================================
+// Re-export all MCP types from zod-schema
+export {
+  type MCPToolAnnotations,
+  type MCPToolDefinition,
+  type MCPResourceDefinition,
+  type MCPPromptArgument,
+  type MCPPromptDefinition,
+  type MCPOAuth2AuthConfig,
+  type MCPAuthConfig,
+  type MCPMetadata,
+  type CollectedToolInfo,
+} from '@packages/zod-schema'
 
-/**
- * MCP tool annotation hints
- */
-export interface MCPToolAnnotations {
-  /** Hint: tool only reads data, no side effects */
-  readOnlyHint?: boolean
-  /** Hint: tool may perform destructive operations */
-  destructiveHint?: boolean
-  /** Hint: tool execution should require user confirmation */
-  requiresConfirmation?: boolean
-}
-
-/**
- * MCP tool definition (JSON metadata format)
- */
-export interface MCPToolDefinition {
-  /** Tool name (unique within namespace) */
-  name: string
-  /** Human-readable description for LLM */
-  description: string
-  /** JSON Schema for input validation */
-  inputSchema: JSONSchema
-  /** Optional JSON Schema for output */
-  outputSchema?: JSONSchema
-  /** Optional annotation hints */
-  annotations?: MCPToolAnnotations
-}
-
-// ============================================
-// MCP Resource Definition
-// ============================================
-
-/**
- * MCP resource definition
- */
-export interface MCPResourceDefinition {
-  /** Resource URI pattern (may contain placeholders like {id}) */
-  uri: string
-  /** Human-readable name */
-  name: string
-  /** Description of the resource */
-  description?: string
-  /** MIME type of the resource content */
-  mimeType?: string
-}
-
-// ============================================
-// MCP Prompt Definition
-// ============================================
-
-/**
- * MCP prompt argument
- */
-export interface MCPPromptArgument {
-  /** Argument name */
-  name: string
-  /** Argument description */
-  description?: string
-  /** Whether the argument is required */
-  required?: boolean
-}
-
-/**
- * MCP prompt definition
- */
-export interface MCPPromptDefinition {
-  /** Prompt name */
-  name: string
-  /** Prompt description */
-  description?: string
-  /** Arguments the prompt accepts */
-  arguments?: MCPPromptArgument[]
-}
-
-// ============================================
-// MCP Auth Configuration
-// ============================================
-
-/**
- * MCP OAuth2 auth configuration
- */
-export interface MCPOAuth2AuthConfig {
-  type: 'oauth2'
-  /** Authorization server URL */
-  authorizationServer: string
-  /** Required OAuth scopes */
-  scopes?: string[]
-  /** Target audiences for token */
-  audiences?: string[]
-}
-
-/**
- * MCP auth configuration (currently only OAuth2)
- */
-export type MCPAuthConfig = MCPOAuth2AuthConfig
-
-// ============================================
-// MCP Metadata
-// ============================================
-
-/**
- * MCP metadata (JSON file format)
- *
- * Defines tools, resources, and prompts for a headless MCP server.
- */
-export interface MCPMetadata {
-  /** Unique name/identifier for this MCP */
-  name: string
-  /** Version string */
-  version: string
-  /** Human-readable description */
-  description?: string
-  /** Authentication configuration */
-  auth?: MCPAuthConfig
-  /** Tool definitions */
-  tools: MCPToolDefinition[]
-  /** Resource definitions */
-  resources?: MCPResourceDefinition[]
-  /** Prompt definitions */
-  prompts?: MCPPromptDefinition[]
-}
-
-// ============================================
-// Collected Tool Info (Multi-MCP)
-// ============================================
-
-/**
- * Collected tool information from multiple MCP namespaces
- */
-export interface CollectedToolInfo {
-  /** All tools in OpenAI format (ready for API) */
-  openaiTools: OpenAIToolDefinition[]
-  /** All tools as AI SDK schemas (keyed by namespace:tool) */
-  aiTools: Record<string, ToolSchema>
-  /** Tool count by namespace */
-  summary: Record<string, number>
-  /** Total tool count */
-  totalTools: number
-}
+import type {
+  MCPToolDefinition,
+  MCPMetadata,
+  CollectedToolInfo,
+} from '@packages/zod-schema'
 
 // ============================================
 // Conversion Utilities
