@@ -1,8 +1,8 @@
-/**
- * Provider Types
- * Re-exported from @packages/zod-schema
- */
-export { 
-// Utilities
-getProviderFromModel, } from '@packages/zod-schema';
+// src/providers.ts
+import {
+  getProviderFromModel
+} from "@packages/zod-schema";
+export {
+  getProviderFromModel
+};
 //# sourceMappingURL=providers.js.map

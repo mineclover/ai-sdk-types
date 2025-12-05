@@ -1,5 +1,5 @@
-export { collectMCPTools, mcpMetadataToOpenAITools, mcpToolToOpenAI, mcpToolToSchema } from './mcp.js';
-export { ToolDefinition as MessageToolDefinition, ToolDefinition } from './messages.js';
+export { collectMCPTools, mcpMetadataToOpenAITools, mcpToolToOpenAI, mcpToolToSchema } from './mcp.cjs';
+export { ToolDefinition as MessageToolDefinition, ToolDefinition } from './messages.cjs';
 import { JSONSchema, ToolSchema, OpenAIToolDefinition, UIWidgetType, FieldDirection, ShortcutConfig, FlowNodeType, BranchMetadata, NodePosition, StateConnection } from '@packages/zod-schema';
 export { BranchMetadata, ChatMessage, ChatRequest, ChatResponse, ClaudeModel, CollectedToolInfo, FieldDirection, FinishReason, FlowNodeType, GoogleModel, JSONSchema, MCPAuthConfig, MCPMetadata, MCPOAuth2AuthConfig, MCPPromptArgument, MCPPromptDefinition, MCPResourceDefinition, MCPToolAnnotations, MCPToolDefinition, Message, MessageContent, MessagePart, MessageRole, Model, NodePosition, OpenAIModel, OpenAIToolDefinition, Provider, ProviderCredentials, ShortcutConfig, StateConnection, StreamChunk, StreamEnd, StreamError, StreamMessage, StreamRequest, TextPart, TokenPricing, ToolCall, ToolCallPart, ToolResultPart, ToolSchema, UIWidgetType, UnifiedChatResponse, UsageInfo, UsageWithCost, estimatePromptTokens, estimateTokens, getProviderFromModel, isTextPart, isToolCallPart, isToolResultPart, mapFinishReason } from '@packages/zod-schema';
 

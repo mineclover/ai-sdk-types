@@ -13,39 +13,39 @@
     "url": "https://github.com/mineclover/webs/issues"
   },
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "default": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
     "./messages": {
       "types": "./dist/messages.d.ts",
       "import": "./dist/messages.js",
-      "default": "./dist/messages.js"
+      "require": "./dist/messages.cjs"
     },
     "./usage": {
       "types": "./dist/usage.d.ts",
       "import": "./dist/usage.js",
-      "default": "./dist/usage.js"
+      "require": "./dist/usage.cjs"
     },
     "./providers": {
       "types": "./dist/providers.d.ts",
       "import": "./dist/providers.js",
-      "default": "./dist/providers.js"
+      "require": "./dist/providers.cjs"
     },
     "./stream": {
       "types": "./dist/stream.d.ts",
       "import": "./dist/stream.js",
-      "default": "./dist/stream.js"
+      "require": "./dist/stream.cjs"
     },
     "./mcp": {
       "types": "./dist/mcp.d.ts",
       "import": "./dist/mcp.js",
-      "default": "./dist/mcp.js"
+      "require": "./dist/mcp.cjs"
     }
   },
   "files": [
@@ -53,8 +53,8 @@
     "src"
   ],
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "tsup",
+    "build:watch": "tsup --watch",
     "type-check": "tsc --noEmit"
   },
   "keywords": [
@@ -71,6 +71,7 @@
     "@packages/zod-schema": "github:mineclover/zod-schema"
   },
   "devDependencies": {
+    "tsup": "^8.5.0",
     "typescript": "^5.7.2"
   }
 }

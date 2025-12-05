@@ -1,9 +1,8 @@
-/**
- * Stream Communication Types
- * Re-exported from @packages/zod-schema
- */
-// Re-export all stream types from zod-schema
-export { 
-// Utilities
-mapFinishReason, } from '@packages/zod-schema';
+// src/stream.ts
+import {
+  mapFinishReason
+} from "@packages/zod-schema";
+export {
+  mapFinishReason
+};
 //# sourceMappingURL=stream.js.map
