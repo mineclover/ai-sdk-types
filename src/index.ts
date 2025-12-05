@@ -89,3 +89,23 @@ export {
   estimatePromptTokens,
   estimateTokens,
 } from './usage.js'
+// Re-export UI schema extensions
+export type {
+  BranchMetadata,
+  FieldDirection,
+  FlowNodeType,
+  NodePosition,
+  ShortcutConfig,
+  StateConnection,
+  UIPropertySchema,
+  UITool,
+  UIToolDefinition,
+  UIWidgetType,
+} from './ui-schema.js'
+export {
+  hasFlowExtensions,
+  hasUIExtensions,
+  hasUIToolExtensions,
+  isEffectNode,
+  isQueryNode,
+} from './ui-schema.js'

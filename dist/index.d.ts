@@ -21,4 +21,6 @@ export type { JSONSchema, OpenAIToolDefinition, Tool, ToolExecutionOptions, Tool
 export { toOpenAITool, toOpenAITools } from './tools.js';
 export type { TokenPricing, UsageInfo, UsageWithCost, } from './usage.js';
 export { estimatePromptTokens, estimateTokens, } from './usage.js';
+export type { BranchMetadata, FieldDirection, FlowNodeType, NodePosition, ShortcutConfig, StateConnection, UIPropertySchema, UITool, UIToolDefinition, UIWidgetType, } from './ui-schema.js';
+export { hasFlowExtensions, hasUIExtensions, hasUIToolExtensions, isEffectNode, isQueryNode, } from './ui-schema.js';
 //# sourceMappingURL=index.d.ts.map

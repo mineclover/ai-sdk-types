@@ -15,4 +15,5 @@ export { getProviderFromModel } from './providers.js';
 export { mapFinishReason } from './stream.js';
 export { toOpenAITool, toOpenAITools } from './tools.js';
 export { estimatePromptTokens, estimateTokens, } from './usage.js';
+export { hasFlowExtensions, hasUIExtensions, hasUIToolExtensions, isEffectNode, isQueryNode, } from './ui-schema.js';
 //# sourceMappingURL=index.js.map
