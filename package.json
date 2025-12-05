@@ -1,6 +1,6 @@
 {
   "name": "@mineclover/ai-sdk-types",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Shared type definitions for AI SDK communication across packages",
   "author": "mineclover",
   "repository": {
