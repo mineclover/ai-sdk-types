@@ -1,0 +1,73 @@
+{
+  "name": "@mineclover/ai-sdk-types",
+  "version": "0.1.0",
+  "description": "Shared type definitions for AI SDK communication across packages",
+  "author": "mineclover",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mineclover/webs.git",
+    "directory": "packages/ai-sdk-types"
+  },
+  "homepage": "https://github.com/mineclover/webs/tree/main/packages/ai-sdk-types",
+  "bugs": {
+    "url": "https://github.com/mineclover/webs/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./messages": {
+      "types": "./dist/messages.d.ts",
+      "import": "./dist/messages.js",
+      "default": "./dist/messages.js"
+    },
+    "./usage": {
+      "types": "./dist/usage.d.ts",
+      "import": "./dist/usage.js",
+      "default": "./dist/usage.js"
+    },
+    "./providers": {
+      "types": "./dist/providers.d.ts",
+      "import": "./dist/providers.js",
+      "default": "./dist/providers.js"
+    },
+    "./stream": {
+      "types": "./dist/stream.d.ts",
+      "import": "./dist/stream.js",
+      "default": "./dist/stream.js"
+    },
+    "./mcp": {
+      "types": "./dist/mcp.d.ts",
+      "import": "./dist/mcp.js",
+      "default": "./dist/mcp.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "ai",
+    "sdk",
+    "types",
+    "typescript",
+    "openai",
+    "anthropic",
+    "claude"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
