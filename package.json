@@ -1,6 +1,6 @@
 {
   "name": "@mineclover/ai-sdk-types",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Shared type definitions for AI SDK communication across packages",
   "author": "mineclover",
   "repository": {
@@ -68,7 +68,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@packages/zod-schema": "github:mineclover/zod-schema"
+    "@packages/zod-schema": "git+https://github.com/mineclover/zod-schema.git"
   },
   "devDependencies": {
     "tsup": "^8.5.0",
